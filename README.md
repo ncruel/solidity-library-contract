@@ -1,4 +1,3 @@
-# solidity-library-contract
+# Lime Academy Entry Task
 Library Smart Contract implemented in Solidity programming language
 
-Lime Academy Entry Task
