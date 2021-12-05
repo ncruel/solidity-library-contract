@@ -18,7 +18,7 @@ contract Library is Ownable {
 
     Book[] public books;
 
-    function _addBook(string memory _isbn, string memory _name, string memory _author, uint _copies) private onlyOwner {
+    function _addBook(string memory _isbn, string memory _name, string memory _author, uint _copies) public onlyOwner {
         uint numberOfBooks = books.length;
 
         bool isNewBook = false;
@@ -46,7 +46,7 @@ contract Library is Ownable {
         emit NewBookAdded(book);
     }
 
-    function _borrowBook(string _isbn) private {
+    function _borrowBook(string memory _isbn) public onlyOwner {
         uint numberOfBooks = books.length;
         
         for (uint i = 0; i < numberOfBooks; i++) {
@@ -59,7 +59,7 @@ contract Library is Ownable {
         }
     }
 
-    function _returnBook(string _isbn) private {
+    function _returnBook(string memory _isbn) public onlyOwner {
         uint numberOfBooks = books.length;
         
         for (uint i = 0; i < numberOfBooks; i++) {
