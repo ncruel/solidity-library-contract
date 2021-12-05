@@ -1,6 +1,8 @@
-pragma solidity 0.8.9;
+pragma solidity 0.8.10;
 
-contract Library {
+import "./Ownable.sol";
+
+contract Library is Ownable {
 
     event NewBookAdded(Book book);
     event NewCopyOfBookAdded(Book book);
@@ -16,7 +18,7 @@ contract Library {
 
     Book[] public books;
 
-    function _addBook(string memory _isbn, string memory _name, string memory _author, uint _copies) private {
+    function _addBook(string memory _isbn, string memory _name, string memory _author, uint _copies) private onlyOwner {
         uint numberOfBooks = books.length;
 
         bool isNewBook = false;
@@ -44,7 +46,7 @@ contract Library {
         emit NewBookAdded(book);
     }
 
-    function _borrowBook(uint _isbn) private {
+    function _borrowBook(string _isbn) private {
         uint numberOfBooks = books.length;
         
         for (uint i = 0; i < numberOfBooks; i++) {
@@ -57,7 +59,7 @@ contract Library {
         }
     }
 
-    function _returnBook(uint _isbn) private {
+    function _returnBook(string _isbn) private {
         uint numberOfBooks = books.length;
         
         for (uint i = 0; i < numberOfBooks; i++) {
