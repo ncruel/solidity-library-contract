@@ -38,3 +38,16 @@ npx hardhat node
 # 6. Deploy contract
 npx hardhat run --network localhost scripts/deploy-script.js
 ```
+
+# GitHub repository
+
+```shell
+# 1. Create a new repository on github manually first!
+# 2. Go to local project folder: 
+git init 
+git add README.md 
+git commit -m "initial commit"
+git branch -M main
+git remote add origin https://github.com/ncruel/solidity-library-contract.git
+git push -u origin main 
+```
